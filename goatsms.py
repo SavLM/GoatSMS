@@ -20,7 +20,7 @@ def change_time():
 
 def lambda_handler(event, context):
     ret = ''
-    numbers = ["+15408399215","+14346889846","+12526730188", "+14084274768"]
+    numbers = ["+1*******","+1*******","+1*******", "+1*******"]
     for number in numbers:
         message = client.messages \
             .create(
