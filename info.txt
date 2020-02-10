@@ -1,0 +1,80 @@
+cloudwatch rule: goattime, target is goatsms
+  json input: {  }
+
+lambda function: goatsms
+  IAM role: goatiam
+    Policies:
+      -goat-cloudwatch
+        {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": "logs:CreateLogGroup",
+              "Resource": ********
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+              ],
+              "Resource": [
+                *******goatsms:*
+              ]
+            }
+          ]
+        }
+
+      -goat-lambda-cloudwatch
+        {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents",
+                "logs:DescribeLogStreams"
+              ],
+              "Resource": "*"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "events:putRule",
+                "events:putTargets",
+                "events:deleteRule",
+                "events:removeTargets"
+              ],
+              "Resource": "*"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "lambda:InvokeFunction"
+              ],
+              "Resource": [
+                ****function:goatsms
+              ]
+            }
+          ]
+        }
+      -goat-dynamodb
+        {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:DeleteItem",
+                "dynamodb:GetItem",
+                "dynamodb:PutItem",
+                "dynamodb:Scan",
+                "dynamodb:UpdateItem"
+              ],
+              "Resource": ****table/*
+            }
+          ]
+        }
