@@ -9,7 +9,7 @@ auth_token = os.environ.get("TWILIO_AUTH_TOKEN")
 client = Client(account_sid, auth_token)
 
 def change_time():
-    value = randint(12,17)
+    value = randint(17,24)
     schedule = 'cron(0 ' + str(value) + ' * * ? *)'
     sched = boto3.client('events')
     sched.put_rule(
