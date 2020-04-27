@@ -20,12 +20,12 @@ def change_time():
 
 def lambda_handler(event, context):
     ret = ''
-    numbers = ["+15408399215","+14346889846","+12526730188", "+14084274768"]
+    numbers = ["+11111111111","+11111111111","+11111111111"]
     for number in numbers:
         message = client.messages \
             .create(
                 body="\n-\n- \n \nA goat!!! \n\n- From your friendly, neighborhood Savvy",
-                from_="+12092059061",
+                from_="+11111111111",
                 media_url=["https://placegoat.com/200/200"],
                 to=number
             )
