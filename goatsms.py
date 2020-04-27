@@ -25,7 +25,7 @@ def lambda_handler(event, context):
         message = client.messages \
             .create(
                 body="\n-\n- \n \nA goat!!! \n\n- From your friendly, neighborhood Savvy",
-                from_="+12092059061",
+                from_="+11111111111",
                 media_url=["https://placegoat.com/200/200"],
                 to=number
             )
